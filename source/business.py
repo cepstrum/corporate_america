@@ -8,6 +8,17 @@ class Business_card(object):
 		self.pr_problem = pr_problem
 		self.possession = possession
 
+class Player(object):
+	#defining player class
+	def __init__(self, number):
+		self.number = number
+		self.businesses = []
+		self.hand_of_business_cards = []
+		self.executive_orders = []
+		self.is_prez = False
+	def add_card(self, card):
+		self.hand_of_business_cars.append(card)
+
 #definition of all Business cards
 
 
