@@ -16,8 +16,16 @@ class Player(object):
 		self.hand_of_business_cards = []
 		self.executive_orders = []
 		self.is_prez = False
+	def add_business(self, business):
+		self.businesses.append(business)
 	def add_card(self, card):
 		self.hand_of_business_cars.append(card)
+	def add_executive_orders(self, executive_order):
+		self.executive_orders.append(executive_order)
+	def add_prez(self):
+		self.is_prez = True
+	def remove_prez(self):
+		self.is_prez = False
 
 #definition of all Business cards
 
