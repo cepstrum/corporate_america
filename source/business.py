@@ -12,6 +12,7 @@ class Player(object):
 	#defining player class
 	def __init__(self, number):
 		self.number = number
+		self.money
 		self.businesses = []
 		self.hand_of_business_cards = []
 		self.executive_orders = []
@@ -26,6 +27,14 @@ class Player(object):
 		self.is_prez = True
 	def remove_prez(self):
 		self.is_prez = False
+
+def ask_players():
+	x = input("How many players? (3-5)")
+	while( x < 3) or (x > 5) or (isinstance(x, int) == False):
+		x = input("Please choose a number of players between 3 and 5 ")
+	return (x)
+
+	
 
 #definition of all Business cards
 
@@ -61,4 +70,11 @@ speedbump_cycles = Business_card(28, "SPEEDBUMP CYCLES", 4, 4, ["Transportation"
 bo_railroad = Business_card(29, "B.O. RAILROAD", 4, 8, ["Transportation"], [], [], 0)
 bro_ribbon_draft = Business_card(30, "BRO RIBBON DRAFT"), 4, 5, ["Food", "Sin"], [], [], 0)
 
+
+#main
+
+number_of_players = ask_players()
+if (number_of_players == 3):
+	for i in range (0, number_of_players):
+		pos
 
