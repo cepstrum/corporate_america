@@ -12,7 +12,7 @@ class Player(object):
 	#defining player class
 	def __init__(self, number):
 		self.number = number
-		self.money
+		self.money = 0
 		self.businesses = []
 		self.hand_of_business_cards = []
 		self.executive_orders = []
@@ -27,12 +27,16 @@ class Player(object):
 		self.is_prez = True
 	def remove_prez(self):
 		self.is_prez = False
+	def add_money(self, money):
+		self.money += money
+	def remove_money(self, money):
+		self.money -= money
 
 def ask_players():
 	x = input("How many players? (3-5)")
 	while( x < 3) or (x > 5) or (isinstance(x, int) == False):
 		x = input("Please choose a number of players between 3 and 5 ")
-	return (x)
+	return x
 
 	
 
