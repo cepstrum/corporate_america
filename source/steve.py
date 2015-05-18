@@ -87,23 +87,16 @@ business_card_deck = [greenwash_consulting, natural_beauty_rhinoplasty, faux_new
 player1 = Player(1, 5)
 
 
-#number_of_cards = len(business_card_deck)
-#print number_of_cards
-#drawn_card = random.randint(0,number_of_cards - 1)
-#print drawn_card
-#player1.hand_of_business_cards.append(business_card_deck[drawn_card] )
-#business_card_deck.pop(drawn_card)
-#test = player1.hand_of_business_cards[0]
-#print test.name
 
-print len(business_card_deck)
 
 def draw_business_card(Player, list_of_cards):
-	number_of_cards = len(business_card_deck)
+#input a Player object and the current deck of business cards.
+#this function draws one card from the deck, returns it, and the new deck with that card removed.
+	number_of_cards = len(list_of_cards)
 	drawn_card = random.randint(0,number_of_cards - 1)
-	Player.hand_of_business_cards.append(business_card_deck[drawn_card])
-	business_card_deck.pop(drawn_card)
+	Player.hand_of_business_cards.append(list_of_cards[drawn_card])
+	list_of_cards.pop(drawn_card)
 	card_in_hand = Player.hand_of_business_cards[0]
-	return (Player.hand_of_business_cards, business_card_deck)
+	return (Player.hand_of_business_cards, list_of_cards)
 player1.hand_of_business_cards, list_of_business_cards = draw_business_card(player1, business_card_deck)
 print player1.hand_of_business_cards[0].name
