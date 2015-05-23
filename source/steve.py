@@ -33,7 +33,7 @@ class Player(object):
 	def remove_prez(self):
 		self.is_prez = False
 
-refcheck = 10
+
 def ask_players():
 #asks how many players and returns that number as an int
 # TO DO: impmenet quit	
