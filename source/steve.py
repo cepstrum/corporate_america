@@ -100,3 +100,5 @@ def draw_business_card(Player, list_of_cards):
 	return (Player.hand_of_business_cards, list_of_cards)
 player1.hand_of_business_cards, list_of_business_cards = draw_business_card(player1, business_card_deck)
 print player1.hand_of_business_cards[0].name
+
+#gerdie branch
