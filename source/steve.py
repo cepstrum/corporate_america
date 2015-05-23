@@ -37,7 +37,7 @@ class Player(object):
 def ask_players():
 #asks how many players and returns that number as an int
 # TO DO: impmenet quit	
-	#CHI
+	#CHILLICHILLAY
 	refcheck +=1 
 	x = raw_input("How many players? (3-5) ")
 	while (x != "3") and (x != "4") and (x != "5"):
