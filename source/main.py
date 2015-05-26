@@ -12,12 +12,10 @@ class Business_card(object):
 
 class Player(object):
 	#defining player class
-	def __init__(self, number, number_of_players):
+	def __init__(self, number, name, money):
+		self.name = name
 		self.number = number
-		if (number_of_players < 5):
-			self.money = 43
-		else:
-			self.money = 35
+		self.money = money
 		self.businesses = []
 		self.hand_of_business_cards = []
 		self.executive_orders = []
@@ -33,22 +31,16 @@ class Player(object):
 	def remove_prez(self):
 		self.is_prez = False
 
+def draw_business_card(Player, list_of_cards, draw_how_many):
+#input a Player object and the current deck of business cards.
+#this function draws (draw_how_many) cards from the deck, returns it, and the new deck with that card removed.
+	for x in range(0, 0 + draw_how_many):
+		number_of_cards = len(list_of_cards)
+		drawn_card = random.randint(0,number_of_cards - 1)
+		Player.hand_of_business_cards.append(list_of_cards[drawn_card])
+		list_of_cards.pop(drawn_card)	
+	return (Player.hand_of_business_cards, list_of_cards)
 
-def ask_players():
-#asks how many players and returns that number as an int
-# TO DO: impmenet quit	
-	#CHILLICHILLAY
-	refcheck +=1 
-	x = raw_input("How many players? (3-5) ")
-	while (x != "3") and (x != "4") and (x != "5"):
-		x = raw_input("Please choose a number of players between 3 and 5")
-
-	if (x == "3"):
-		return (3)
-	if (x == "4"):
-		return (4)
-	if (x == "5"):
-		return(5)
 
 #definition of all Business cards
 #TO DO: add remaining cards
@@ -82,23 +74,38 @@ solacel = Business_card(27, "SOLACEL", 10, 6, ["Energy", "Green"], [], [], 0)
 speedbump_cycles = Business_card(28, "SPEEDBUMP CYCLES", 4, 4, ["Transportation", "Health"], [], [], 0)
 bo_railroad = Business_card(29, "B.O. RAILROAD", 4, 8, ["Transportation"], [], [], 0)
 bro_ribbon_draft = Business_card(30, "BRO RIBBON DRAFT", 4, 5, ["Food", "Sin"], [], [], 0)
-business_card_deck = [greenwash_consulting, natural_beauty_rhinoplasty, faux_news, start_worrying_insurance, the_liberal_media, hard_crock_cafe, pu_power, pharmopticon, happy_ending_pictures, bank_of_shamerica, genetifood, big_journey_suvs, mud_hole_acupuncture, lights_camera_megachurch, chupadinero_casino, sweatibank, start_worrying_insurance, heavy_lid_dispensaries, pantent_trolls, naive_bottled_water, factory_farms, back_alley_business_models, soal_of_coal, something_hippie_farms, jocks_trap, oggle_search, solacel, speedbump_cycles, bo_railroad, bro_ribbon_draft]
-
-player1 = Player(1, 5)
+business_card_deck = [greenwash_consulting, natural_beauty_rhinoplasty, faux_news, start_worrying_insurance, the_liberal_media, hard_crock_cafe, pu_power, pharmopticon, happy_ending_pictures, bank_of_shamerica, genetifood, big_journey_suvs, mud_hole_acupuncture, lights_camera_megachurch, chupadinero_casino, sweatibank, start_worrying_insurance, heavy_lid_dispensaries, pantent_trolls, naive_bottled_water, factory_farms, back_alley_business_models, soal_of_coal, something_hippie_farms, jocks_trap, oggle_searc...(line truncated)...
 
 
 
+x = raw_input("How many players? (3-5) ")
+while (x != "3") and (x != "4") and (x != "5"):
+	x = raw_input("Please choose a number of players between 3 and 5")
+print (x)
+name1 = raw_input("Enter name for player 1: ")
+player1 = Player(1, name1, 42)
+name2 = raw_input("Enter name for player 2: ")
+player2 = Player(2, name2, 42)
+name3 = raw_input("Enter name for player 3: ")
+player3 = Player(3, name3, 42)
+if (x == "4") or (x == "5"):
+	name4 = raw_input("Enter name for player 4: ")
+	player4 = Player(4, name4, 42)
+	if (x == "5"):
+		name5 = raw_input("Enter name for player 5: ")
+		player5 = Player(5, name5, 35)
+		player1.money = 35
+		player2.money = 35
+		player3.money = 35
+		player4.money = 35
 
-def draw_business_card(Player, list_of_cards):
-#input a Player object and the current deck of business cards.
-#this function draws one card from the deck, returns it, and the new deck with that card removed.
-	number_of_cards = len(list_of_cards)
-	drawn_card = random.randint(0,number_of_cards - 1)
-	Player.hand_of_business_cards.append(list_of_cards[drawn_card])
-	list_of_cards.pop(drawn_card)
-	card_in_hand = Player.hand_of_business_cards[0]
-	return (Player.hand_of_business_cards, list_of_cards)
-player1.hand_of_business_cards, list_of_business_cards = draw_business_card(player1, business_card_deck)
-print player1.hand_of_business_cards[0].name
 
-#gerdie branch
+
+
+print player3.money
+
+
+#testing
+#player1.hand_of_business_cards, list_of_business_cards = draw_business_card(player1, business_card_deck,2)
+#print player1.hand_of_business_cards[0].name
+#Sprint player1.hand_of_business_cards[1].name
