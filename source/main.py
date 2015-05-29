@@ -34,12 +34,17 @@ class Player(object):
 def draw_business_card(Player, list_of_cards, draw_how_many):
 #input a Player object and the current deck of business cards.
 #this function draws (draw_how_many) cards from the deck, returns it, and the new deck with that card removed.
+
+	#if there aren't enough cards to draw in the pile, add the discard pile and then clear out the discard pile
+	if (len(list_of_cards) < draw_how_many):
+						
 	for x in range(0, 0 + draw_how_many):
 		number_of_cards = len(list_of_cards)
 		drawn_card = random.randint(0,number_of_cards - 1)
 		Player.hand_of_business_cards.append(list_of_cards[drawn_card])
 		list_of_cards.pop(drawn_card)	
 	return (Player.hand_of_business_cards, list_of_cards)
+
 
 
 #definition of all Business cards
@@ -74,24 +79,25 @@ solacel = Business_card(27, "SOLACEL", 10, 6, ["Energy", "Green"], [], [], 0)
 speedbump_cycles = Business_card(28, "SPEEDBUMP CYCLES", 4, 4, ["Transportation", "Health"], [], [], 0)
 bo_railroad = Business_card(29, "B.O. RAILROAD", 4, 8, ["Transportation"], [], [], 0)
 bro_ribbon_draft = Business_card(30, "BRO RIBBON DRAFT", 4, 5, ["Food", "Sin"], [], [], 0)
-business_card_deck = [greenwash_consulting, natural_beauty_rhinoplasty, faux_news, start_worrying_insurance, the_liberal_media, hard_crock_cafe, pu_power, pharmopticon, happy_ending_pictures, bank_of_shamerica, genetifood, big_journey_suvs, mud_hole_acupuncture, lights_camera_megachurch, chupadinero_casino, sweatibank, start_worrying_insurance, heavy_lid_dispensaries, pantent_trolls, naive_bottled_water, factory_farms, back_alley_business_models, soal_of_coal, something_hippie_farms, jocks_trap, oggle_searc...(line truncated)...
+business_card_deck = [greenwash_consulting, natural_beauty_rhinoplasty, faux_news, start_worrying_insurance, the_liberal_media, hard_crock_cafe, pu_power, pharmopticon, happy_ending_pictures, bank_of_shamerica, genetifood, big_journey_suvs, mud_hole_acupuncture, lights_camera_megachurch, chupadinero_casino, sweatibank, start_worrying_insurance, heavy_lid_dispensaries, pantent_trolls, naive_bottled_water, factory_farms, back_alley_business_models, soal_of_coal, something_hippie_farms, jocks_trap, oggle_search, solacel, speedbump_cycles, bo_railroad, bro_ribbon_draft]
 
 
-
-x = raw_input("How many players? (3-5) ")
-while (x != "3") and (x != "4") and (x != "5"):
-	x = raw_input("Please choose a number of players between 3 and 5")
-print (x)
+#ask how many players and create player objects
+number_of_players = raw_input("How many players? (3-5) ")
+while (number_of_players != "3") and (number_of_players != "4") and (number_of_players != "5"):
+	number_of_players = raw_input("Please choose a number of players between 3 and 5")
+print (number_of_players)
+#Player object creation and name assignment
 name1 = raw_input("Enter name for player 1: ")
 player1 = Player(1, name1, 42)
 name2 = raw_input("Enter name for player 2: ")
 player2 = Player(2, name2, 42)
 name3 = raw_input("Enter name for player 3: ")
 player3 = Player(3, name3, 42)
-if (x == "4") or (x == "5"):
+if (number_of_players == "4") or (number_of_players == "5"):
 	name4 = raw_input("Enter name for player 4: ")
 	player4 = Player(4, name4, 42)
-	if (x == "5"):
+	if (number_of_players == "5"):
 		name5 = raw_input("Enter name for player 5: ")
 		player5 = Player(5, name5, 35)
 		player1.money = 35
@@ -100,11 +106,28 @@ if (x == "4") or (x == "5"):
 		player4.money = 35
 
 
+#initial business card assignment
+if (number_of_players == "3") or (number_of_players == "4"):
+	player1.hand_of_business_cards, business_card_deck = draw_business_card(player1, business_card_deck, 5)
+	player2.hand_of_business_cards, business_card_deck = draw_business_card(player2, business_card_deck, 5)
+	player3.hand_of_business_cards, business_card_deck = draw_business_card(player3, business_card_deck, 5)
+	if (number_of_players == "4"):
+		player4.hand_of_business_cards, business_card_deck = draw_business_card(player4, business_card_deck, 5)
+if (number_of_players == "5"):
+	player1.hand_of_business_cards, business_card_deck = draw_business_card(player1, business_card_deck, 4)
+	player2.hand_of_business_cards, business_card_deck = draw_business_card(player2, business_card_deck, 4)
+	player3.hand_of_business_cards, business_card_deck = draw_business_card(player3, business_card_deck, 4)
+	player4.hand_of_business_cards, business_card_deck = draw_business_card(player4, business_card_deck, 4)
+	player5.hand_of_business_cards, business_card_deck = draw_business_card(player5, business_card_deck, 4)
 
 
-print player3.money
-
-
+#testing
+#print len(business_card_deck)
+#for i in range (0,5):
+	
+#	print player1.hand_of_business_cards[i].name
+#	print player2.hand_of_business_cards[i].name
+#	print player3.hand_of_business_cards[i].name
 #testing
 #player1.hand_of_business_cards, list_of_business_cards = draw_business_card(player1, business_card_deck,2)
 #print player1.hand_of_business_cards[0].name
