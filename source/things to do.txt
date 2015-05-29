@@ -1,8 +1,0 @@
-1. Function to display cards in a players hand
-It should print out the various of all card objects in a players hand so a player can decide if they want to play the card or not. 
-
-2. Function to deal initial set of player cards out - Steve :)
-
-
-to do these things, we should create a new file, get the code functional, and then add code to file and commit. We should communicate when we will be committing. 
-lahve ya flower
