@@ -35,8 +35,12 @@ def draw_business_card(Player, list_of_cards, draw_how_many):
 #input a Player object and the current deck of business cards.
 #this function draws (draw_how_many) cards from the deck, returns it, and the new deck with that card removed.
 
+	global business_discard_pile
 	#if there aren't enough cards to draw in the pile, add the discard pile and then clear out the discard pile
 	if (len(list_of_cards) < draw_how_many):
+		for item in range(0, len(business_discard_pile)):
+			list_of_cards.append(business_discard_pile[item])
+		business_discard_pile = []
 						
 	for x in range(0, 0 + draw_how_many):
 		number_of_cards = len(list_of_cards)
@@ -96,6 +100,7 @@ mcdedcow = Business_card(44, "MCDEDCOW", 5, 10, ["Food"], ["Labor"], ["Shared Cu
 microhard = Business_card(45, "MICROHARD", 10, 4, ["Technology"], [], ["Job Creator"], 0)
 business_card_deck = [microhard, mcdedcow, bougie_boozie, dinorrhea_oil, hogs_of_anarchy, clean_conscience_pr, trius, daboozie, mile_high_airlines, cabal_news_network, deranged_fantasy_games, name_brand_dealers, my_face, brilliant_snarchitects, manscape_gardeners, greenwash_consulting, natural_beauty_rhinoplasty, faux_news, start_worrying_insurance, the_liberal_media, hard_crock_cafe, pu_power, pharmopticon, happy_ending_pictures, bank_of_shamerica, genetifood, big_journey_suvs, mud_hole_acupuncture, lights_camera_megachurch, chupadinero_casino, sweatibank, start_worrying_insurance, heavy_lid_dispensaries, pantent_trolls, naive_bottled_water, factory_farms, back_alley_business_models, soal_of_coal, something_hippie_farms, jocks_trap, oggle_search, solacel, speedbump_cycles, bo_railroad, bro_ribbon_draft]
 
+business_discard_pile = []
 
 #ask how many players and create player objects
 number_of_players = raw_input("How many players? (3-5) ")
