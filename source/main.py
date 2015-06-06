@@ -103,6 +103,7 @@ business_card_deck = [microhard, mcdedcow, bougie_boozie, dinorrhea_oil, hogs_of
 business_discard_pile = []
 
 #ask how many players and create player objects
+player_list = []
 number_of_players = raw_input("How many players? (3-5) ")
 while (number_of_players != "3") and (number_of_players != "4") and (number_of_players != "5"):
 	number_of_players = raw_input("Please choose a number of players between 3 and 5")
@@ -110,21 +111,25 @@ print (number_of_players)
 #Player object creation and name assignment
 name1 = raw_input("Enter name for player 1: ")
 player1 = Player(1, name1, 42)
+player_list.append(player1)
 name2 = raw_input("Enter name for player 2: ")
 player2 = Player(2, name2, 42)
+player_list.append(player2)
 name3 = raw_input("Enter name for player 3: ")
 player3 = Player(3, name3, 42)
+player_list.append(player3)
 if (number_of_players == "4") or (number_of_players == "5"):
 	name4 = raw_input("Enter name for player 4: ")
 	player4 = Player(4, name4, 42)
+	player_list.append(player4)
 	if (number_of_players == "5"):
 		name5 = raw_input("Enter name for player 5: ")
 		player5 = Player(5, name5, 35)
+		player_list.append(player5)
 		player1.money = 35
 		player2.money = 35
 		player3.money = 35
 		player4.money = 35
-
 
 #initial business card assignment
 if (number_of_players == "3") or (number_of_players == "4"):
@@ -140,15 +145,25 @@ if (number_of_players == "5"):
 	player4.hand_of_business_cards, business_card_deck = draw_business_card(player4, business_card_deck, 4)
 	player5.hand_of_business_cards, business_card_deck = draw_business_card(player5, business_card_deck, 4)
 
-
-#testing
-#print len(business_card_deck)
-#for i in range (0,5):
+"""testing
+print len(business_card_deck)
+for i in range (0,5):
 	
-#	print player1.hand_of_business_cards[i].name
-#	print player2.hand_of_business_cards[i].name
-#	print player3.hand_of_business_cards[i].name
+	print player1.hand_of_business_cards[i].name
+	print player2.hand_of_business_cards[i].name
+	print player3.hand_of_business_cards[i].name
+
+player1.hand_of_business_cards, list_of_business_cards = draw_business_card(player1, business_card_deck,2)
+print player1.hand_of_business_cards[0].name
+print player1.hand_of_business_cards[1].name"""
+
+#print business cards in hand
+def print_business_cards(player_list):
+    for player in player_list:
+        #num_cards = len(player.hand_of_business_cards)
+        print player.name, "has these business cards: "
+        for x in player.hand_of_business_cards:
+            print x.name, "cost:", x.cost, "income:", x.income, "consumer type:", x.consumer_type, "PR problem:", x.pr_problem
+        
 #testing
-#player1.hand_of_business_cards, list_of_business_cards = draw_business_card(player1, business_card_deck,2)
-#print player1.hand_of_business_cards[0].name
-#Sprint player1.hand_of_business_cards[1].name
+#print_business_cards(player_list)
